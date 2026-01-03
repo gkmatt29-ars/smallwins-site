@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 207 66% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 207 66% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 207 66% 15%;
+
+    --primary: 201 72% 30%;
+    --primary-foreground: 0 0% 100%;
+
+    --primary-dark: 202 72% 29%;
+
+    --secondary: 207 20% 96%;
+    --secondary-foreground: 207 66% 15%;
+
+    --muted: 207 20% 96%;
+    --muted-foreground: 207 20% 45%;
+
+    --accent: 43 52% 67%;
+    --accent-foreground: 207 66% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 207 20% 90%;
+    --input: 207 20% 90%;
+    --ring: 201 72% 30%;
+
+    --radius: 0.5rem;
+
+    /* Custom gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(201 72% 30%) 0%, hsl(202 72% 20%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(207 20% 98%) 100%);
+
+    /* Custom shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(207 66% 15% / 0.1);
+    --shadow-card: 0 1px 3px hsl(207 66% 15% / 0.08), 0 8px 24px hsl(207 66% 15% / 0.06);
+    --shadow-elevated: 0 12px 40px -8px hsl(207 66% 15% / 0.15);
+  }
+
+  .dark {
+    --background: 207 66% 8%;
+    --foreground: 0 0% 98%;
+
+    --card: 207 66% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 207 66% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 43 52% 67%;
+    --primary-foreground: 207 66% 15%;
+
+    --secondary: 207 30% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 207 30% 15%;
+    --muted-foreground: 207 20% 65%;
+
+    --accent: 201 72% 30%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 207 30% 20%;
+    --input: 207 30% 20%;
+    --ring: 43 52% 67%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold tracking-tight text-foreground;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.5s ease-out forwards;
+}
+
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-500 {
+  animation-delay: 500ms;
+}

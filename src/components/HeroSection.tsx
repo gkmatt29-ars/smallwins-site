@@ -27,14 +27,15 @@ const HeroSection = () => {
 
           {/* Minimal subheadline */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 opacity-0 animate-fade-in-up animation-delay-200">
-            One simple Order Hub for custom, project-based work.
+            You want relief, not more software. That's what this is.
           </p>
+
 
           {/* CTAs (aligned) */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-in-up animation-delay-300">
             <Button variant="hero" size="xl" asChild>
               <a href="#order-hub">
-                See the Order Hub
+                Inside the Order Hub
                 <ArrowRight className="w-5 h-5" />
               </a>
             </Button>

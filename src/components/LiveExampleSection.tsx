@@ -25,11 +25,11 @@ const LiveExampleSection = () => {
               {/* Company Header */}
               <div className="flex flex-col md:flex-row md:items-center gap-6 mb-8 pb-8 border-b border-border">
                 <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center flex-shrink-0 shadow-lg">
-                  <span className="text-xl font-bold text-primary-foreground">C&amp;M</span>
+                  <span className="text-xl font-bold text-primary-foreground">HT</span>
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-foreground mb-1">
-                    Sample business: C&amp;M Sporting Goods
+                    Sample business: HomeTown Sporting Goods
                   </h3>
                   <p className="text-muted-foreground text-sm">
                     Custom apparel, trophies, and awards

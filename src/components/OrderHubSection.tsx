@@ -1,6 +1,64 @@
+import * as React from "react";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { ZoomIn } from "lucide-react";
+
 import ordersImg from "@/assets/order-hub-orders.png";
 import detailsImg from "@/assets/order-hub-details.png";
 import details2Img from "@/assets/order-hub-details-2.png";
+
+type ZoomableImageProps = {
+  src: string;
+  alt: string;
+};
+
+const ZoomableImage = ({ src, alt }: ZoomableImageProps) => {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <button
+          type="button"
+          className="group relative block w-full overflow-hidden rounded-2xl border border-border bg-background shadow-card focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+          aria-label="Click to zoom screenshot"
+        >
+          <img
+            src={src}
+            alt={alt}
+            className="w-full h-auto cursor-zoom-in"
+            loading="lazy"
+          />
+
+          {/* Subtle affordance (hidden on mobile) */}
+          <div className="pointer-events-none absolute inset-x-3 bottom-3 flex items-center justify-between">
+            <span className="hidden sm:inline-flex items-center gap-1 rounded-full border bg-background/90 px-3 py-1 text-xs text-muted-foreground shadow-sm backdrop-blur">
+              <ZoomIn className="h-3.5 w-3.5" />
+              Click to zoom
+            </span>
+          </div>
+        </button>
+      </DialogTrigger>
+
+      {/* Responsive, mobile-safe zoom */}
+      <DialogContent
+        className="
+          p-0 overflow-hidden
+          w-[94vw] max-w-[94vw] h-[82vh]
+          sm:w-[92vw] sm:max-w-[92vw] sm:h-[86vh]
+          lg:w-[88vw] lg:max-w-[88vw] lg:h-[88vh]
+        "
+      >
+        <div className="h-full w-full bg-background">
+          <div className="h-full w-full overflow-auto">
+            <img
+              src={src}
+              alt={alt}
+              className="block w-full h-full object-contain"
+            />
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};
 
 export const OrderHubSection = () => {
   return (
@@ -16,17 +74,13 @@ export const OrderHubSection = () => {
         </div>
 
         <div className="grid gap-10 md:gap-12 max-w-5xl mx-auto">
-          {/* Screenshot 1: Orders overview */}
+          {/* Screenshot 1 */}
           <div className="grid md:grid-cols-5 gap-5 md:gap-8 items-center">
             <div className="md:col-span-3">
-              <div className="rounded-2xl border border-border shadow-card overflow-hidden bg-background">
-                <img
-                  src={ordersImg}
-                  alt="Order Hub orders overview"
-                  className="w-full h-auto"
-                  loading="lazy"
-                />
-              </div>
+              <ZoomableImage
+                src={ordersImg}
+                alt="Order Hub orders overview"
+              />
             </div>
             <div className="md:col-span-2">
               <h3 className="text-xl font-semibold text-foreground">
@@ -38,17 +92,13 @@ export const OrderHubSection = () => {
             </div>
           </div>
 
-          {/* Screenshot 2: Order details (status + progress) */}
+          {/* Screenshot 2 */}
           <div className="grid md:grid-cols-5 gap-5 md:gap-8 items-center">
             <div className="md:col-span-3 md:order-2">
-              <div className="rounded-2xl border border-border shadow-card overflow-hidden bg-background">
-                <img
-                  src={detailsImg}
-                  alt="Order Hub order details - status and progress"
-                  className="w-full h-auto"
-                  loading="lazy"
-                />
-              </div>
+              <ZoomableImage
+                src={detailsImg}
+                alt="Order Hub order details - status and progress"
+              />
             </div>
             <div className="md:col-span-2 md:order-1">
               <h3 className="text-xl font-semibold text-foreground">
@@ -60,17 +110,13 @@ export const OrderHubSection = () => {
             </div>
           </div>
 
-          {/* Screenshot 3: Order details (files + margin + communication) */}
+          {/* Screenshot 3 */}
           <div className="grid md:grid-cols-5 gap-5 md:gap-8 items-center">
             <div className="md:col-span-3">
-              <div className="rounded-2xl border border-border shadow-card overflow-hidden bg-background">
-                <img
-                  src={details2Img}
-                  alt="Order Hub order details - files, margin, and communication"
-                  className="w-full h-auto"
-                  loading="lazy"
-                />
-              </div>
+              <ZoomableImage
+                src={details2Img}
+                alt="Order Hub order details - files, margin, and communication"
+              />
             </div>
             <div className="md:col-span-2">
               <h3 className="text-xl font-semibold text-foreground">
@@ -87,5 +133,4 @@ export const OrderHubSection = () => {
   );
 };
 
-// Keep default export so either import style works
 export default OrderHubSection;

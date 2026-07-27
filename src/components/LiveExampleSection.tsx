@@ -1,95 +1,60 @@
 import { Button } from "@/components/ui/button";
-import { ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink, FormInput, LayoutDashboard } from "lucide-react";
+import Reveal from "@/components/Reveal";
+import { DEMO_FORM_URL } from "@/lib/constants";
 
-const LiveExampleSection = () => {
-  return (
-    <section id="case-study" className="py-20 md:py-28">
-      <div className="container">
-        <div className="max-w-3xl mx-auto text-center mb-12">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/30 mb-6">
-            <span className="text-sm font-medium text-foreground">Examples</span>
-          </div>
-
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            See a <span className="text-accent">sample</span> setup
-          </h2>
-
-          <p className="text-lg text-muted-foreground">
-            Explore a demo order form and a preview of the Order Hub experience.
-          </p>
-        </div>
-
-        <div className="max-w-3xl mx-auto">
-          <div className="bg-background rounded-2xl border-2 border-primary/30 shadow-elevated overflow-hidden">
-            <div className="p-8 md:p-10">
-              {/* Company Header */}
-              <div className="flex flex-col md:flex-row md:items-center gap-6 mb-8 pb-8 border-b border-border">
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center flex-shrink-0 shadow-lg">
-                  <span className="text-xl font-bold text-primary-foreground">HT</span>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-foreground mb-1">
-                    Sample business: HomeTown Sporting Goods
-                  </h3>
-                  <p className="text-muted-foreground text-sm">
-                    Custom apparel, trophies, and awards
-                  </p>
-                </div>
-              </div>
-
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-4">
-                <div className="flex-1 sm:flex-none">
-                  <Button
-                    variant="accent"
-                    size="lg"
-                    asChild
-                    className="w-full sm:w-auto"
-                  >
-                    <a
-                      href="https://cm.smallwins.ai"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      View Example Order Form
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </Button>
-                  <p className="mt-2 text-xs text-muted-foreground">
-                    This is a demo form for a sample business.
-                  </p>
-                </div>
-
-                <div className="flex-1 sm:flex-none">
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    asChild
-                    className="w-full sm:w-auto border-primary/30 hover:bg-primary/5"
-                  >
-                    <a href="#order-hub">
-                      Preview the Order Hub
-                      <ExternalLink className="w-4 h-4" />
-                    </a>
-                  </Button>
-                  <p className="mt-2 text-xs text-muted-foreground">
-                    A guided preview with realistic sample data.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Footer note */}
-            <div className="bg-primary/5 px-8 py-3 border-t border-primary/20">
-              <p className="text-sm text-muted-foreground text-center">
-                Demos shown — not live customer data.
+const LiveExampleSection = () => (
+  <section id="demo" className="py-20 sm:py-28">
+    <div className="container">
+      <Reveal className="mx-auto max-w-5xl">
+        <div className="relative overflow-hidden rounded-[2rem] border border-primary/20 bg-gradient-to-br from-background via-primary/[0.035] to-accent/15 p-7 shadow-elevated sm:p-10">
+          <div className="pointer-events-none absolute -right-20 -top-24 h-72 w-72 rounded-full bg-primary/10 blur-3xl" />
+          <div className="relative grid items-center gap-9 lg:grid-cols-[0.8fr_1.2fr]">
+            <div>
+              <span className="section-kicker">Live demo</span>
+              <h2 className="mt-4 font-display text-3xl font-bold sm:text-4xl">See a realistic Small Wins setup.</h2>
+              <p className="mt-4 leading-relaxed text-muted-foreground">
+                Explore the customer-facing form, then jump back to the guided product tour to see where the request lands.
               </p>
+              <p className="mt-5 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">Demo information only—no live customer data.</p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              <a
+                href={DEMO_FORM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group rounded-2xl border bg-background p-6 shadow-card transition-all hover:-translate-y-1 hover:border-accent hover:shadow-elevated"
+              >
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-accent/25 text-primary">
+                  <FormInput className="h-5 w-5" />
+                </div>
+                <h3 className="mt-5 text-lg font-semibold">Try the customer form</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">Choose a request type and see how structured intake feels.</p>
+                <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                  Open the demo <ExternalLink className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                </span>
+              </a>
+
+              <a
+                href="#product"
+                className="group rounded-2xl border bg-background p-6 shadow-card transition-all hover:-translate-y-1 hover:border-primary/30 hover:shadow-elevated"
+              >
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                  <LayoutDashboard className="h-5 w-5" />
+                </div>
+                <h3 className="mt-5 text-lg font-semibold">Explore the Order Hub</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">See orders, deadlines, files, notes, and financials in context.</p>
+                <span className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-primary">
+                  View the product tour <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                </span>
+              </a>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
-};
+      </Reveal>
+    </div>
+  </section>
+);
 
 export default LiveExampleSection;

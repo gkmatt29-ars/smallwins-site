@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Small Wins">
+  <defs>
+    <linearGradient id="gold" x1="10" y1="8" x2="54" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#B98947"/>
+      <stop offset="0.52" stop-color="#F2D98C"/>
+      <stop offset="1" stop-color="#D5B86E"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" rx="14" fill="#0D2B3D"/>
+  <path d="M14 29.5 32 16l18 13.5v9L32 25 14 38.5z" fill="url(#gold)"/>
+  <path d="M14 42.5 32 29l18 13.5v9L32 38 14 51.5z" fill="url(#gold)" opacity=".96"/>
+</svg>

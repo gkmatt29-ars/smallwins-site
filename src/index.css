@@ -5,75 +5,30 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 207 66% 15%;
-
+    --foreground: 207 67% 14%;
     --card: 0 0% 100%;
-    --card-foreground: 207 66% 15%;
-
+    --card-foreground: 207 67% 14%;
     --popover: 0 0% 100%;
-    --popover-foreground: 207 66% 15%;
-
-    --primary: 201 72% 30%;
+    --popover-foreground: 207 67% 14%;
+    --primary: 201 71% 30%;
     --primary-foreground: 0 0% 100%;
-
-    --primary-dark: 202 72% 29%;
-
-    --secondary: 207 20% 96%;
-    --secondary-foreground: 207 66% 15%;
-
-    --muted: 207 20% 96%;
-    --muted-foreground: 207 20% 45%;
-
-    --accent: 43 52% 67%;
-    --accent-foreground: 207 66% 15%;
-
-    --destructive: 0 84.2% 60.2%;
+    --primary-dark: 204 72% 22%;
+    --secondary: 205 33% 96%;
+    --secondary-foreground: 207 67% 14%;
+    --muted: 205 29% 96%;
+    --muted-foreground: 207 18% 43%;
+    --accent: 43 56% 69%;
+    --accent-foreground: 207 67% 14%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
+    --border: 207 24% 89%;
+    --input: 207 24% 86%;
+    --ring: 201 71% 30%;
+    --radius: 0.75rem;
 
-    --border: 207 20% 90%;
-    --input: 207 20% 90%;
-    --ring: 201 72% 30%;
-
-    --radius: 0.5rem;
-
-    /* Custom gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(201 72% 30%) 0%, hsl(202 72% 20%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(207 20% 98%) 100%);
-
-    /* Custom shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(207 66% 15% / 0.1);
-    --shadow-card: 0 1px 3px hsl(207 66% 15% / 0.08), 0 8px 24px hsl(207 66% 15% / 0.06);
-    --shadow-elevated: 0 12px 40px -8px hsl(207 66% 15% / 0.15);
-  }
-
-  .dark {
-    --background: 207 66% 8%;
-    --foreground: 0 0% 98%;
-
-    --card: 207 66% 10%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 207 66% 10%;
-    --popover-foreground: 0 0% 98%;
-
-    --primary: 43 52% 67%;
-    --primary-foreground: 207 66% 15%;
-
-    --secondary: 207 30% 15%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 207 30% 15%;
-    --muted-foreground: 207 20% 65%;
-
-    --accent: 201 72% 30%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 207 30% 20%;
-    --input: 207 30% 20%;
-    --ring: 43 52% 67%;
+    --shadow-soft: 0 5px 22px -8px hsl(207 67% 14% / 0.16);
+    --shadow-card: 0 1px 3px hsl(207 67% 14% / 0.08), 0 12px 32px -18px hsl(207 67% 14% / 0.24);
+    --shadow-elevated: 0 24px 70px -30px hsl(207 67% 14% / 0.42);
   }
 }
 
@@ -82,12 +37,100 @@
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background font-sans text-foreground antialiased;
+    min-width: 320px;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-semibold tracking-tight text-foreground;
+    @apply tracking-tight text-foreground;
+  }
+
+  ::selection {
+    background: hsl(var(--accent) / 0.55);
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer components {
+  .section-kicker {
+    @apply inline-flex text-xs font-bold uppercase tracking-[0.16em] text-primary;
+  }
+
+  .gold-text {
+    background: linear-gradient(110deg, #b98947 0%, #dfc47f 48%, #b98947 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hero-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--primary) / 0.035) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--primary) / 0.035) 1px, transparent 1px),
+      radial-gradient(circle at 85% 22%, hsl(var(--primary) / 0.08), transparent 30%),
+      radial-gradient(circle at 10% 90%, hsl(var(--accent) / 0.11), transparent 30%);
+    background-size: 48px 48px, 48px 48px, auto, auto;
+  }
+
+  .product-shot {
+    transform: translateZ(0);
+  }
+
+  .product-shot img {
+    transition: transform 500ms cubic-bezier(.2,.8,.2,1);
+  }
+
+  .product-shot:hover img {
+    transform: scale(1.012);
+  }
+
+  .phone-frame {
+    border-radius: 2rem;
+    box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.7);
+  }
+
+  .form-field {
+    @apply flex flex-col gap-2 text-sm font-semibold text-foreground;
+  }
+
+  .form-field small {
+    @apply font-normal text-muted-foreground;
+  }
+
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    @apply w-full rounded-xl border border-input bg-background px-3.5 py-3 text-sm font-normal text-foreground outline-none transition-shadow placeholder:text-muted-foreground/65 focus:border-primary focus:ring-4 focus:ring-primary/10;
+  }
+
+  .form-field select {
+    @apply appearance-none pr-10;
+    background-image: linear-gradient(45deg, transparent 50%, hsl(var(--muted-foreground)) 50%), linear-gradient(135deg, hsl(var(--muted-foreground)) 50%, transparent 50%);
+    background-position: calc(100% - 18px) 52%, calc(100% - 13px) 52%;
+    background-size: 5px 5px, 5px 5px;
+    background-repeat: no-repeat;
+  }
+
+  .form-field textarea {
+    @apply resize-y;
+  }
+
+  .prose-smallwins h2 {
+    @apply font-display text-2xl font-bold;
+  }
+
+  .prose-smallwins p {
+    @apply mt-3 leading-7 text-muted-foreground;
+  }
+
+  .prose-smallwins a {
+    @apply font-medium text-primary underline underline-offset-4;
   }
 }
 
@@ -97,66 +140,72 @@
   }
 }
 
-/* Animations */
 @keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fade-in {
-  from {
-    opacity: 0;
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes float-soft {
+  0%, 100% { transform: translateY(0) rotate(-1.5deg); }
+  50% { transform: translateY(-8px) rotate(-0.8deg); }
+}
+
+@keyframes float-chip {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+.animate-fade-in-up { animation: fade-in-up 700ms cubic-bezier(.2,.8,.2,1) forwards; }
+.animate-fade-in { animation: fade-in 700ms ease-out forwards; }
+.animation-delay-100 { animation-delay: 100ms; }
+.animation-delay-200 { animation-delay: 200ms; }
+.animation-delay-300 { animation-delay: 300ms; }
+.animation-delay-400 { animation-delay: 400ms; }
+.animation-delay-500 { animation-delay: 500ms; }
+
+.hero-form-card { animation: float-soft 7s ease-in-out infinite; }
+.floating-chip { animation: float-chip 5s ease-in-out infinite; }
+.floating-chip-delayed { animation: float-chip 5.5s ease-in-out 800ms infinite; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 700ms cubic-bezier(.2,.8,.2,1), transform 700ms cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pain-chip {
+  transition: transform 250ms ease, border-color 250ms ease, color 250ms ease;
+}
+
+.pain-chip:hover {
+  transform: translateY(-2px) rotate(-0.5deg);
+  border-color: hsl(var(--accent));
+  color: hsl(var(--foreground));
+}
+
+@media (max-width: 640px) {
+  .hero-grid {
+    background-size: 32px 32px, 32px 32px, auto, auto;
   }
-  to {
-    opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
-}
-
-@keyframes slide-in-right {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-.animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out forwards;
-}
-
-.animate-fade-in {
-  animation: fade-in 0.5s ease-out forwards;
-}
-
-.animate-slide-in-right {
-  animation: slide-in-right 0.5s ease-out forwards;
-}
-
-.animation-delay-100 {
-  animation-delay: 100ms;
-}
-
-.animation-delay-200 {
-  animation-delay: 200ms;
-}
-
-.animation-delay-300 {
-  animation-delay: 300ms;
-}
-
-.animation-delay-400 {
-  animation-delay: 400ms;
-}
-
-.animation-delay-500 {
-  animation-delay: 500ms;
+  .reveal { opacity: 1; transform: none; }
 }

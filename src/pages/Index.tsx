@@ -3,65 +3,54 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import WhoItsForSection from "@/components/WhoItsForSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
-import { OrderHubSection } from "@/components/OrderHubSection";
+import ProductTourSection from "@/components/ProductTourSection";
 import FounderSection from "@/components/FounderSection";
 import LiveExampleSection from "@/components/LiveExampleSection";
 import PricingSection from "@/components/PricingSection";
+import FAQSection from "@/components/FAQSection";
+import LeadCaptureSection from "@/components/LeadCaptureSection";
 import CTASection from "@/components/CTASection";
 import Footer from "@/components/Footer";
 
-const Index = () => {
-  return (
-    <>
-      <Helmet>
-        <title>Small Wins – Custom Order Management for Small Businesses</title>
-        <meta
-          name="description"
-          content="Clean order forms for customers. One simple Order Hub for your business. Small Wins helps small businesses manage custom, project-based work — apparel, embroidery, screen printing, trophies, awards, and more."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="canonical" href="https://smallwins.ai" />
+const title = "Small Wins | Turn Custom Requests Into Trackable Orders";
+const description = "Small Wins turns custom requests into organized, trackable orders with branded intake forms, a shared Order Hub, hands-on implementation, and ongoing support.";
 
-        {/* Open Graph */}
-        <meta
-          property="og:title"
-          content="Small Wins – Custom Order Management for Small Businesses"
-        />
-        <meta
-          property="og:description"
-          content="Collect requests, track work, and keep customers informed — without the chaos. Built for custom, project-based work."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://smallwins.ai" />
+const Index = () => (
+  <>
+    <Helmet>
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <link rel="canonical" href="https://smallwins.ai" />
 
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Small Wins – Custom Order Management for Small Businesses"
-        />
-        <meta
-          name="twitter:description"
-          content="Collect requests, track work, and keep customers informed — without the chaos. Built for custom, project-based work."
-        />
-      </Helmet>
+      <meta property="og:title" content={title} />
+      <meta property="og:description" content={description} />
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content="https://smallwins.ai" />
+      <meta property="og:image" content="https://smallwins.ai/og-small-wins.png" />
 
-      <div className="min-h-screen bg-background">
-        <Header />
-        <main>
-          <HeroSection />
-          <WhoItsForSection />
-          <HowItWorksSection />
-          <OrderHubSection />
-          <FounderSection />
-          <LiveExampleSection />
-          <PricingSection />
-          <CTASection />
-        </main>
-        <Footer />
-      </div>
-    </>
-  );
-};
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content="https://smallwins.ai/og-small-wins.png" />
+    </Helmet>
+
+    <div className="min-h-screen bg-background">
+      <Header />
+      <main>
+        <HeroSection />
+        <WhoItsForSection />
+        <HowItWorksSection />
+        <ProductTourSection />
+        <FounderSection />
+        <LiveExampleSection />
+        <PricingSection />
+        <FAQSection />
+        <LeadCaptureSection />
+        <CTASection />
+      </main>
+      <Footer />
+    </div>
+  </>
+);
 
 export default Index;

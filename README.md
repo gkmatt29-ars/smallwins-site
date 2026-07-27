@@ -1,73 +1,37 @@
-# Welcome to your Lovable project
+# Small Wins marketing site
 
-## Project info
+Public marketing site for Small Wins, built with Vite, React, TypeScript, Tailwind CSS, and shadcn/ui.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Local development
 
-## How can I edit this code?
+Node 22 LTS is recommended.
 
-There are several ways of editing your application.
-
-**Use Lovable**
-
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
-
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+npm ci
+cp .env.example .env.local
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The marketing lead form requires the public Supabase values documented in `.env.example` and the Edge Function/database setup in `DEPLOYMENT_NOTES.md`.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Production build
 
-**Use GitHub Codespaces**
+```bash
+npm run build
+npm run lint
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Important project files
 
-## What technologies are used for this project?
+- `SMALL_WINS_FINAL_POLISH_BUILD_BRIEF.txt` — authoritative positioning, pricing, copy, and scope decisions
+- `DEPLOYMENT_NOTES.md` — Supabase lead-form setup and deployment steps
+- `TEST_CHECKLIST.md` — visual, link, metadata, and form checks
+- `supabase/migrations/202607210001_create_marketing_leads.sql` — lead table and compatibility update
+- `supabase/functions/submit-marketing-lead/index.ts` — secure lead submission and Resend notification
+- `reference_screenshots/` — original supplied product screenshots
 
-This project is built with:
+## Live destinations preserved
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- Customer-form demo: `https://cm.smallwins.ai`
+- Client login: `https://admin.smallwins.ai`
+- Marketing site: `https://smallwins.ai`

@@ -1,0 +1,4 @@
+# Public marketing lead form: callers use the public publishable/anon key in the apikey header.
+# Authentication, validation, spam controls, and database writes are handled inside the function.
+[functions.submit-marketing-lead]
+verify_jwt = false

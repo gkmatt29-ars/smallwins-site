@@ -1,45 +1,60 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Check, Plus, ShieldCheck, Wrench } from "lucide-react";
+import { Check, ShieldCheck, Wrench } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
-const implementationFeatures = [
-  "Workflow discovery",
-  "Branded request forms",
-  "Related request-type configuration",
-  "Shared Order Hub configuration",
-  "Statuses, deadlines, files, financial fields, and email setup",
-  "Testing and training",
-  "Launch support",
-];
-
-const monthlyFeatures = [
-  "Customer request forms",
+const formAndHubFeatures = [
+  "Custom-configured customer request form",
   "Private Order Hub",
+  "Branding and intake configuration",
+  "Workflow configuration",
+  "Statuses, deadlines, files & financials",
+  "Standard form notifications",
   "Secure hosting",
-  "Routine maintenance",
-  "Product improvements",
-  "Reliability monitoring",
+  "Routine maintenance & improvements",
   "Product support",
+  "Testing, training & launch support",
 ];
 
-const projectFeatures = [
-  "Integrations",
-  "Historical imports",
-  "Custom reporting",
-  "Additional major processes",
-  "Significant website work",
-  "Specialized automation or unique development requests",
+const connectedFeatures = [
+  "Private Order Hub",
+  "Connect your existing request form",
+  "Submission and field mapping",
+  "Automated order creation",
+  "Workflow configuration",
+  "Statuses, deadlines, files & financials",
+  "Secure integration setup",
+  "Routine maintenance & monitoring",
+  "Product support",
+  "Testing, training & launch support",
 ];
 
 const FeatureList = ({ features }: { features: string[] }) => (
-  <div className="mt-6 space-y-3">
+  <ul className="mt-6 space-y-3">
     {features.map((feature) => (
-      <div key={feature} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
-        <Check className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+      <li key={feature} className="flex gap-3 text-sm leading-relaxed text-muted-foreground">
+        <Check aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-primary" />
         <span>{feature}</span>
-      </div>
+      </li>
     ))}
+  </ul>
+);
+
+const PlanPricing = ({ implementation, monthly }: { implementation: string; monthly: string }) => (
+  <div className="mt-6 rounded-2xl bg-primary/[0.045] p-5">
+    <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-4">
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">Implementation</p>
+        <p className="mt-1 text-xs font-semibold text-muted-foreground">Starting at</p>
+        <p className="mt-0.5 font-display text-2xl font-bold">{implementation}</p>
+      </div>
+      <div>
+        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">Ongoing service</p>
+        <p className="mt-1 flex flex-wrap items-baseline gap-x-1 font-display text-4xl font-bold leading-none">
+          {monthly}<span className="text-base font-semibold text-muted-foreground"> / month</span>
+        </p>
+      </div>
+    </div>
   </div>
 );
 
@@ -49,70 +64,69 @@ const PricingSection = () => (
     <div className="container relative">
       <Reveal className="mx-auto max-w-3xl text-center">
         <Badge variant="secondary" className="rounded-full px-4 py-1.5">Straightforward pricing</Badge>
-        <h2 className="mt-5 font-display text-4xl font-bold sm:text-5xl">Hands-on implementation. Reliable ongoing service.</h2>
+        <h2 className="mt-5 font-display text-4xl font-bold sm:text-5xl">Two ways to get started.</h2>
         <p className="mt-5 text-lg leading-relaxed text-muted-foreground">
-          Start with a focused system configured around your business. Add larger capabilities only when they are actually needed.
+          Keep the customer intake process you already have, or let Small Wins handle it for you. Either way, your team gets one organized place to manage every request.
         </p>
       </Reveal>
 
-      <div className="mx-auto mt-12 grid max-w-6xl gap-6 lg:grid-cols-3">
+      <div className="mx-auto mt-12 grid max-w-5xl gap-6 lg:grid-cols-2">
         <Reveal>
-          <article className="h-full rounded-[1.75rem] border bg-background p-7 shadow-card sm:p-8">
+          <article className="flex h-full flex-col rounded-[1.75rem] border bg-background p-7 shadow-card sm:p-8">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <span className="text-sm font-semibold text-primary">Implementation</span>
-                <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">Starting at</p>
-                <div className="mt-1 font-display text-4xl font-bold">$2,500</div>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">A hands-on implementation configured around the way your business handles custom requests.</p>
+                <p className="text-sm font-semibold text-primary">Keep your existing form</p>
+                <h3 className="mt-2 font-display text-2xl font-bold">Connected</h3>
               </div>
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent/25 text-primary">
-                <Wrench className="h-5 w-5" />
+                <ShieldCheck aria-hidden="true" className="h-5 w-5" />
               </div>
             </div>
-            <FeatureList features={implementationFeatures} />
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              For businesses that already have a request form they like. Small Wins connects your existing intake process directly to the private Order Hub.
+            </p>
+            <PlanPricing implementation="$2,500" monthly="$499" />
+            <FeatureList features={connectedFeatures} />
+            <div className="mt-auto pt-7">
+            <Button className="h-auto min-h-10 w-full whitespace-normal" asChild>
+              <a href="#contact">Talk through your workflow</a>
+            </Button>
+            </div>
           </article>
         </Reveal>
 
         <Reveal delay={80}>
-          <article className="relative h-full rounded-[1.75rem] border-2 border-accent bg-background p-7 shadow-elevated sm:p-8">
-            <span className="absolute -top-3 left-7 rounded-full border border-accent bg-background px-3 py-1 text-xs font-semibold text-primary shadow-sm">Ongoing service</span>
+          <article className="relative flex h-full flex-col rounded-[1.75rem] border-2 border-accent bg-background p-7 shadow-elevated sm:p-8">
             <div className="flex items-start justify-between gap-4">
               <div>
-                <span className="text-sm font-semibold text-primary">Ongoing service</span>
-                <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-muted-foreground">Starting at</p>
-                <div className="mt-1 font-display text-4xl font-bold">$299<span className="text-lg font-semibold text-muted-foreground"> / month</span></div>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">The platform, hosting, maintenance, improvements, and support required to keep Small Wins running reliably.</p>
+                <p className="text-sm font-semibold text-primary">Full intake + order management</p>
+                <h3 className="mt-2 font-display text-2xl font-bold">Form + Hub</h3>
               </div>
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-                <ShieldCheck className="h-5 w-5" />
+                <Wrench aria-hidden="true" className="h-5 w-5" />
               </div>
             </div>
-            <FeatureList features={monthlyFeatures} />
-            <Button className="mt-7 w-full" asChild>
+            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+              For businesses that want Small Wins to provide and manage the customer-facing request experience as well as the private Order Hub.
+            </p>
+            <PlanPricing implementation="$3,500" monthly="$599" />
+            <FeatureList features={formAndHubFeatures} />
+            <div className="mt-auto pt-7">
+            <Button className="h-auto min-h-10 w-full whitespace-normal" asChild>
               <a href="#contact">Talk through your workflow</a>
             </Button>
+            </div>
           </article>
         </Reveal>
 
-        <Reveal delay={160}>
-          <article className="h-full rounded-[1.75rem] border bg-background p-7 shadow-card sm:p-8">
-            <div className="flex items-start justify-between gap-4">
-              <div>
-                <span className="text-sm font-semibold text-primary">Additional projects</span>
-                <div className="mt-3 font-display text-4xl font-bold">Quoted separately</div>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">Larger additions can be scoped as separate projects when your business needs them.</p>
-              </div>
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-muted text-primary">
-                <Plus className="h-5 w-5" />
-              </div>
-            </div>
-            <FeatureList features={projectFeatures} />
-          </article>
-        </Reveal>
       </div>
 
       <Reveal className="mx-auto mt-8 max-w-5xl rounded-2xl border border-primary/15 bg-background px-6 py-5 text-center text-sm leading-relaxed text-muted-foreground shadow-sm">
-        Small Wins is a standardized platform with hands-on configuration. Major additions are reviewed and approved before work begins.
+        <h3 className="font-semibold text-foreground">Need something beyond the standard setup?</h3>
+        <p className="mt-2">
+          Historical imports, custom reporting, additional workflows, specialized automation, major website work, and other custom integrations can be scoped separately. Any additional work is reviewed and approved before it begins.
+        </p>
+        <p className="mt-3 text-xs">Pricing may vary for unusually complex workflows or integrations.</p>
       </Reveal>
     </div>
   </section>
